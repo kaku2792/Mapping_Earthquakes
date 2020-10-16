@@ -4,6 +4,7 @@ console.log("working");
 // Create the map object with center at the San Francisco airport.
 let map = L.map('mapid').setView([37.6213, -122.3790], 5);
 
+
 // Coordinates for each point to be used in the polyline.
 let line = [
     [33.9416, -118.4085],
@@ -40,3 +41,15 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tile
 
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
+
+// Create the map object with center and zoom level.
+let map = L.map('mapid').setView([30, 30], 2);
+// Accessing the airport GeoJSON URL
+let airportData = "https://github.com/kaku2792/Mapping_Earthquakes/blob/main/majorAirports.json";
+// Grabbing our GeoJSON data.
+d3.json(airportData).then(function(data) {
+  console.log(data);
+// Creating a GeoJSON layer with the retrieved data.
+L.geoJson(data).addTo(map);
+});
+
